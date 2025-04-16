@@ -25,6 +25,8 @@ export const userRegsiter = async (req, res) => {
             sameSite: process.env.NODE_ENV === 'production' ? 'none' : 'strict',
             maxAge: 7 * 24 * 60 * 60 * 1000
         })
+        res.setHeader('Access-Control-Allow-Origin', 'https://your-frontend.vercel.app');
+        res.setHeader('Access-Control-Allow-Credentials', 'true');
         return res.json({ success: true, message: 'User Registered Successfully' })
     } catch (error) {
         res.json({ success: false, message: error.message })
@@ -55,6 +57,10 @@ export const userLogin = async (req, res) => {
             sameSite: process.env.NODE_ENV === 'production' ? 'none' : 'strict',
             maxAge: 7 * 24 * 60 * 60 * 1000
         })
+
+        res.setHeader('Access-Control-Allow-Origin', 'https://your-frontend.vercel.app');
+        res.setHeader('Access-Control-Allow-Credentials', 'true');
+
         if (isPassMatch) {
             return res.json({ success: true, message: 'Login Successful' })
         } else {
