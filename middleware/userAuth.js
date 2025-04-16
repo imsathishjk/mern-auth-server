@@ -11,13 +11,18 @@ const userAuth = async (req, res, next) => {
         }
         const decodeToken = jwt.verify(token, process.env.JWT_SECRET_TEXT);
         if (decodeToken.id) {
-           
+
             req.userId = decodeToken.id;
 
         } else {
             console.log('token2:', token)
             return res.json({ success: false, message: 'Not Authorized Login Again!' });
         }
+
+        res.setHeader("Access-Control-Allow-Origin", "https://mern-auth-client-flame.vercel.app");
+        res.setHeader("Access-Control-Allow-Credentials", "true");
+
+
         return next();
 
 
