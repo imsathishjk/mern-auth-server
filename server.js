@@ -20,7 +20,7 @@ await connectDB();
 
 
 const allowedOrigins = [
-    'http://localhost:5173' // ✅ Your Vercel frontend URL
+    'http://localhost:5173', 'https://mern-auth-client-flame.vercel.app' // ✅ Your Vercel frontend URL
     // 
 ];
 
